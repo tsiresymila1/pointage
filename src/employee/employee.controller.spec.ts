@@ -12,7 +12,7 @@ describe('EmployeeController', () => {
   let createEmployeeDto: CreateEmployeeDto
   let filterEmployeeDto: FilterEmployeeDto
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     jest.setTimeout(10000);
     const module: TestingModule = await Test.createTestingModule({
       controllers: [EmployeeController],

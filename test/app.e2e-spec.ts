@@ -6,7 +6,7 @@ import { AppModule } from "../src/app.module";
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
@@ -15,17 +15,34 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/employee (POST)', () => {
-    return request(app.getHttpServer())
-      .post('/employee')
-      .expect(200)
-      .responseType('application/json')
-  });
+  describe("Create employee", ()=> {
+    it('/employee (POST)', () => {
+      return request(app.getHttpServer())
+        .post('/employee')
+        .send({
+          "name" : "Test",
+          "firstName" : "Teste",
+          "department" : "Teste"
+        })
+        .expect(201)
+        .then(( res)=>{
+          expect(res.body.id).toBeDefined()
+        })
+    });
+  })
 
-  it('/employee/all (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/employee/all')
-      .expect(200)
-      .responseType('application/json')
+  describe("Get employee", ()=>{
+    it('/employee/all (GET)', () => {
+      return request(app.getHttpServer())
+        .post('/employee/all')
+        .expect(201)
+        .then(( res)=>{
+          expect(res.body.length).toBeDefined()
+        })
+    });
+  })
+
+  afterAll(async () => {
+    await app.close();
   });
 });

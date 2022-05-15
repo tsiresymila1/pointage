@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
     .setTitle('Pointage API')
-    .setDescription('API REST Node Js gérant ce système de pointage')
+    .setDescription("API REST Node Js gérant un systéme de pointage de l'école ABC ")
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
