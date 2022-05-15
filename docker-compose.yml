@@ -1,0 +1,32 @@
+version: "3.1"
+services:
+  app:
+    container_name: app_pointage
+    image: app_pointage:v1
+    build:
+      context: ./
+      dockerfile: ./docker/prod.Dockerfile
+    restart: always
+    depends_on:
+      - mysqldb
+    command: sh -c "dockerize -wait tcp://mysqldb:3306 -timeout 300s -wait-retry-interval 30s npm run start"
+
+  mysqldb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    command: mysqld --sql_mode=""
+    volumes:
+      - mysql_pointage_db:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=mysqldb
+      - PMA_PORT=3306
+
+volumes:
+  mysql_pointage_db:

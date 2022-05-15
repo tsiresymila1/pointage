@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  app:
+    ports:
+      - "3000:3000"
+      - "4443:443"
+
+  mysqldb:
+    ports:
+      - "53306:3306"
+
+  phpmyadmin:
+    ports:
+      - "20000:80"
