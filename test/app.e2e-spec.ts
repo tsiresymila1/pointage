@@ -15,8 +15,8 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  describe("Create employee", ()=> {
-    it('/employee (POST)', () => {
+  describe("Employee", ()=> {
+    it('Create an employee /employee (POST)', () => {
       return request(app.getHttpServer())
         .post('/employee')
         .send({
@@ -29,10 +29,8 @@ describe('AppController (e2e)', () => {
           expect(res.body.id).toBeDefined()
         })
     });
-  })
 
-  describe("Get employee", ()=>{
-    it('/employee/all (GET)', () => {
+    it('Get all employee /employee/all (GET)', () => {
       return request(app.getHttpServer())
         .post('/employee/all')
         .expect(201)
@@ -41,6 +39,7 @@ describe('AppController (e2e)', () => {
         })
     });
   })
+
 
   afterAll(async () => {
     await app.close();

@@ -1,7 +1,7 @@
-# Mini-project "Pointage":
+# Mini-project "Pointage"
 ## Description
 
-API REST Node Js gérant le pointage des employee de l'école ABC.
+API REST Node Js gérant le pointage des employée de l'école ABC.
 
 
 ## Running the app

@@ -13,7 +13,7 @@ export class EmployeeService {
   constructor(@Inject('EMPLOYEE_REPOSITORY') private employeeRepository: Repository<Employee>,
               @Inject('EMPLOYEE_CHECK_REPOSITORY') private employeeCheckRepository: Repository<CheckEmployee>) {
   }
-  create(createEmployeeDto: CreateEmployeeDto) {
+  create(createEmployeeDto: CreateEmployeeDto):  Promise<CreateEmployeeDto & Employee> {
     const data = {
       ...createEmployeeDto,
       dateCreated: new Date()
