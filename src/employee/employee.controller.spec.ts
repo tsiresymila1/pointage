@@ -1,11 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { EmployeeController } from './employee.controller';
 import { EmployeeService } from './employee.service';
-import { CreateEmployeeDto } from "./dto/create-employee.dto";
 import { DatabaseModule } from "../database/database.module";
 import { employeeCheckingProviders, employeeProviders } from "./employee.provider";
-import { FilterEmployeeDto } from "./dto/filter-employee.dto";
-import { Employee } from "./entities/employee.entity";
 
 describe('EmployeeController', () => {
   let controller: EmployeeController;

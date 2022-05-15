@@ -1,7 +1,6 @@
-
-import { Optional } from "@nestjs/common";
+import { IsOptional } from "class-validator";
 
 export class FilterEmployeeDto {
-  @Optional()
+  @IsOptional()
   public dateCreated?: Date;
 }
